@@ -7,7 +7,7 @@ import { format } from 'date-fns';
 
 export default function AdminCharts() {
     const qc = useQueryClient();
-    const [lastRefreshed, setLastRefreshed] = useState<string | null>(null);
+    const [, setLastRefreshed] = useState<string | null>(null);
 
     const { data: snapshots, isLoading } = useQuery({
         queryKey: ['chart-snapshots'],

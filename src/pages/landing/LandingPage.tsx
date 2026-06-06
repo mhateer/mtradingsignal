@@ -3,15 +3,6 @@ import { Link } from 'react-router-dom';
 import ChartsSection from './ChartsSection';
 
 
-import { format, parseISO } from 'date-fns';
-
-interface EquityPoint {
-    date: string;
-    cumReturn: number;
-    dayReturn: number;
-    trades: number;
-    wins: number;
-}
 interface ChartData {
     direction_chart: {
         data: {
@@ -90,31 +81,6 @@ export default function LandingPage() {
     }, []);
 
     const stats = chartData?.stats?.data;
-    const backtest = chartData?.backtest_chart?.data;
-    const direction = chartData?.direction_chart?.data;
-    const updatedAt = stats?.updatedAt ? new Date(stats.updatedAt) : null;
-
-    // Prepare equity curve data
-    const equityCurve = backtest?.equityCurve ?? [];
-
-    // Prepare direction bar data (last 30 traded signals)
-    const directionBars = (direction?.points ?? [])
-        .filter(p => p.signal !== 'FLAT')
-        .slice(0, 60)
-        .reverse()
-        .map((p, i) => ({
-            index: i,
-            label: format(parseISO(p.time), 'MMM d HH:mm'),
-            value: p.profitable === true ? (p.maxFavorablePct ?? 1) : p.profitable === false ? -(p.maxAdversePct ?? 0.5) : 0,
-            signal: p.signal,
-            open: p.open,
-            high: p.high,
-            low: p.low,
-            close: p.close,
-            profitable: p.profitable,
-            maxFavorablePct: p.maxFavorablePct,
-            maxAdversePct: p.maxAdversePct,
-        }));
 
     return (
         <div style={{ fontFamily: "'EB Garamond', Georgia, serif", background: '#FAF7F2', color: '#1C2B1A', overflowX: 'hidden' }}>

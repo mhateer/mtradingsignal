@@ -1,6 +1,6 @@
 import { NavLink, Outlet, useNavigate } from 'react-router-dom';
 import { useAuthStore } from '../../store/authStore';
-import { LayoutDashboard, Users, CreditCard, FileText, BarChart2, LogOut, TrendingUp } from 'lucide-react';
+import { LayoutDashboard, Users, CreditCard, FileText, BarChart2 } from 'lucide-react';
 const navItems = [
   { to: '/admin/dashboard', icon: LayoutDashboard, label: 'Dashboard' },
   { to: '/admin/payments', icon: CreditCard, label: 'Payments' },

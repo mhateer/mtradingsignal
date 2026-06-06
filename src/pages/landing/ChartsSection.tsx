@@ -1,4 +1,4 @@
-import { useState, useMemo, useCallback } from 'react';
+import { useState, useMemo } from 'react';
 import {
   AreaChart, Area, XAxis, YAxis, CartesianGrid,
   Tooltip, ResponsiveContainer, ReferenceLine,
@@ -255,7 +255,7 @@ function Slider({
 }
 
 // ── Main Export ───────────────────────────────────────────────────────────────
-export default function ChartsSection({ directionData, statsData }: ChartsSectionProps) {
+export default function ChartsSection({ directionData }: ChartsSectionProps) {
   const [tp, setTp] = useState(2);
   const [sl, setSl] = useState(1);
 

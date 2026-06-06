@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
-import { getMe, getMySubscription, getMySubscriptions, getPlans, requestSubscription, regenerateApiKey } from '../../api/userAuth'; import { useUserAuthStore } from '../../store/userAuthStore';
+import { getMySubscription, getMySubscriptions, getPlans, requestSubscription, regenerateApiKey } from '../../api/userAuth'; import { useUserAuthStore } from '../../store/userAuthStore';
 import type { Plan, Subscription } from '../../types/types';
 import { format } from 'date-fns';
 import toast from 'react-hot-toast';
