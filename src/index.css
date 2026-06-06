@@ -29,3 +29,31 @@ body {
 h1, h2, h3, h4 {
   font-family: 'Playfair Display', Georgia, serif;
 }
+
+@media (max-width: 768px) {
+  /* Landing page nav */
+  .nav-links { display: none !important; }
+  .nav-mobile-cta { display: flex !important; }
+
+  /* Grids */
+  .grid-4-col { grid-template-columns: 1fr 1fr !important; }
+  .grid-3-col { grid-template-columns: 1fr !important; }
+  .grid-2-col { grid-template-columns: 1fr !important; }
+
+  /* Hero stats bar */
+  .hero-stats { gap: 24px !important; flex-wrap: wrap !important; padding: 16px 24px !important; }
+
+  /* Sections padding */
+  .section-pad { padding: 60px 20px !important; }
+
+  /* Charts */
+  .chart-header { flex-direction: column !important; align-items: flex-start !important; }
+  .chart-stat { text-align: left !important; }
+  .slider-grid { grid-template-columns: 1fr !important; }
+  .stats-grid-5 { grid-template-columns: 1fr 1fr !important; }
+}
+
+@media (max-width: 480px) {
+  .grid-4-col { grid-template-columns: 1fr !important; }
+  .hero-stats { gap: 16px !important; }
+}

@@ -69,7 +69,7 @@ export default function UserDashboard() {
     <div style={{ minHeight: '100vh', background: '#F5F0E8' }}>
 
       {/* Nav */}
-      <nav style={{ background: '#1C2B1A', padding: '0 40px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', height: '56px' }}>
+      <nav style={{ background: '#1C2B1A', padding: '0 20px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', height: '56px' }}>
         <a href="/"><div style={{ fontFamily: 'Playfair Display, serif', fontSize: '16px', color: '#D4AF6A', letterSpacing: '0.04em' }}>mTradingSignal</div></a>
         <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
           <span style={{ fontSize: '13px', color: '#8aaa84', fontFamily: 'EB Garamond, serif' }}>{user?.email}</span>
@@ -77,7 +77,7 @@ export default function UserDashboard() {
         </div>
       </nav>
 
-      <div style={{ maxWidth: '900px', margin: '0 auto', padding: '40px 24px' }}>
+      <div style={{ maxWidth: '900px', margin: '0 auto', padding: '32px 16px' }}>
 
         {/* Header */}
         <div style={{ marginBottom: '32px' }}>
@@ -136,7 +136,7 @@ export default function UserDashboard() {
 
         {/* ACTIVE STATE */}
         {hasActiveSub && (
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', marginBottom: '20px' }}>
+          <div className="grid-2-col" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', marginBottom: '20px' }}>
 
             {/* Subscription status */}
             <div style={cardStyle}>

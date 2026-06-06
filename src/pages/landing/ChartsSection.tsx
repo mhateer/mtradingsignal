@@ -298,13 +298,13 @@ export default function ChartsSection({ directionData }: ChartsSectionProps) {
     <div style={{ fontFamily: 'EB Garamond, Georgia, serif' }}>
 
       {/* ── Section I: Signal Direction Accuracy ───────────────────────────── */}
-      <section id="charts" style={{ padding: '100px 48px', background: '#FAF7F2' }}>
+      <section id="charts" className="section-pad" style={{ padding: '100px 48px', background: '#FAF7F2' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
 
           {/* Header */}
           <div style={{ marginBottom: '48px' }}>
             <div style={{ fontSize: '10px', color: '#8a7e6a', letterSpacing: '0.2em', marginBottom: '10px' }}>CHART I · SIGNAL INTELLIGENCE</div>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', flexWrap: 'wrap', gap: '24px' }}>
+            <div className="chart-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', flexWrap: 'wrap', gap: '24px' }}>
               <div>
                 <h2 style={{ fontFamily: 'Playfair Display, Georgia, serif', fontSize: '36px', color: '#1C2B1A', margin: 0, fontWeight: 400, lineHeight: 1.1 }}>
                   Signal Direction Accuracy
@@ -317,7 +317,7 @@ export default function ChartsSection({ directionData }: ChartsSectionProps) {
               </div>
 
               {/* Live accuracy stat */}
-              <div style={{ textAlign: 'right' }}>
+              <div className="chart-stat" style={{ textAlign: 'right' }}>
                 <div style={{
                   fontFamily: 'Playfair Display, Georgia, serif',
                   fontSize: '56px', lineHeight: 1,
@@ -415,13 +415,13 @@ export default function ChartsSection({ directionData }: ChartsSectionProps) {
       </section>
 
       {/* ── Section II: Interactive Backtest ────────────────────────────────── */}
-      <section id="backtest" style={{ padding: '100px 48px', background: '#0f1f0e' }}>
+      <section id="backtest" className="section-pad" style={{ padding: '100px 48px', background: '#0f1f0e' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
 
           {/* Header */}
           <div style={{ marginBottom: '48px' }}>
             <div style={{ fontSize: '10px', color: '#5C7A58', letterSpacing: '0.2em', marginBottom: '10px' }}>CHART II · 30-DAY BACKTEST</div>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', flexWrap: 'wrap', gap: '24px' }}>
+            <div className="chart-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', flexWrap: 'wrap', gap: '24px' }}>
               <div>
                 <h2 style={{ fontFamily: 'Playfair Display, Georgia, serif', fontSize: '36px', color: '#FAF7F2', margin: 0, fontWeight: 400, lineHeight: 1.1 }}>
                   Paper Trading Simulation
@@ -433,7 +433,7 @@ export default function ChartsSection({ directionData }: ChartsSectionProps) {
               </div>
 
               {/* Return stat */}
-              <div style={{ textAlign: 'right' }}>
+              <div className="chart-stat" style={{ textAlign: 'right' }}>
                 <div style={{
                   fontFamily: 'Playfair Display, Georgia, serif',
                   fontSize: '56px', lineHeight: 1,
@@ -453,7 +453,7 @@ export default function ChartsSection({ directionData }: ChartsSectionProps) {
           </div>
 
           {/* TP/SL Sliders */}
-          <div style={{
+          <div className="slider-grid" style={{
             background: '#1C2B1A', borderRadius: '12px', padding: '28px 32px',
             marginBottom: '24px', border: '1px solid #D4AF6A15',
             display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '32px',
@@ -476,7 +476,7 @@ export default function ChartsSection({ directionData }: ChartsSectionProps) {
 
           {/* Stats row */}
           {!noData && (
-            <div style={{
+            <div className="stats-grid-5" style={{
               display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)',
               gap: '12px', marginBottom: '24px',
             }}>

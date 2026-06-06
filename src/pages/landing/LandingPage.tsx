@@ -91,7 +91,7 @@ export default function LandingPage() {
                 background: 'rgba(28,43,26,0.97)', backdropFilter: 'blur(12px)',
                 borderBottom: '1px solid #D4AF6A22',
                 display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-                padding: '0 48px', height: '60px',
+                padding: '0 24px', height: '60px',
             }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                     <img src="/mts-logo.png" alt="mTradingSignal" style={{ width: '32px', height: '32px', objectFit: 'contain' }} />
@@ -99,19 +99,27 @@ export default function LandingPage() {
                         mTradingSignal
                     </span>
                 </div>
-                <div style={{ display: 'flex', gap: '32px', alignItems: 'center' }}>
+                {/* Desktop links */}
+                <div className="nav-links" style={{ display: 'flex', gap: '32px', alignItems: 'center' }}>
                     {['Charts', 'Backtest', 'Pricing', 'FAQ'].map(item => (
-                        <a key={item} href={`#${item.toLowerCase()}`} style={{ color: '#8aaa84', fontSize: '13px', textDecoration: 'none', letterSpacing: '0.06em', transition: 'color 0.2s' }}
+                        <a key={item} href={`#${item.toLowerCase()}`} style={{ color: '#8aaa84', fontSize: '13px', textDecoration: 'none', letterSpacing: '0.06em' }}
                             onMouseEnter={e => (e.currentTarget.style.color = '#D4AF6A')}
                             onMouseLeave={e => (e.currentTarget.style.color = '#8aaa84')}>
                             {item}
                         </a>
                     ))}
-                    <Link to="/login" style={{ color: '#D4AF6A', fontSize: '13px', textDecoration: 'none', border: '1px solid #D4AF6A44', borderRadius: '4px', padding: '6px 16px', letterSpacing: '0.06em' }}>
+                    <Link to="/login" style={{ color: '#D4AF6A', fontSize: '13px', textDecoration: 'none', border: '1px solid #D4AF6A44', borderRadius: '4px', padding: '6px 16px' }}>
                         Sign In
                     </Link>
-                    <Link to="/register" style={{ background: '#D4AF6A', color: '#1C2B1A', fontSize: '13px', textDecoration: 'none', borderRadius: '4px', padding: '7px 18px', fontWeight: 600, letterSpacing: '0.04em' }}>
+                    <Link to="/register" style={{ background: '#D4AF6A', color: '#1C2B1A', fontSize: '13px', textDecoration: 'none', borderRadius: '4px', padding: '7px 18px', fontWeight: 600 }}>
                         Get Started
+                    </Link>
+                </div>
+                {/* Mobile CTA */}
+                <div className="nav-mobile-cta" style={{ display: 'none', gap: '8px', alignItems: 'center' }}>
+                    <Link to="/login" style={{ color: '#D4AF6A', fontSize: '13px', textDecoration: 'none' }}>Sign In</Link>
+                    <Link to="/register" style={{ background: '#D4AF6A', color: '#1C2B1A', fontSize: '12px', textDecoration: 'none', borderRadius: '4px', padding: '6px 14px', fontWeight: 600 }}>
+                        Start →
                     </Link>
                 </div>
             </nav>
@@ -120,10 +128,10 @@ export default function LandingPage() {
             <section style={{
                 minHeight: '100vh', background: 'linear-gradient(160deg, #1C2B1A 0%, #2e4029 50%, #1a2518 100%)',
                 display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
-                padding: '120px 48px 80px', textAlign: 'center', position: 'relative', overflow: 'hidden',
+                padding: '120px 24px 80px', textAlign: 'center', position: 'relative', overflow: 'hidden',
             }}>
                 {/* Background grain */}
-                <div style={{ position: 'absolute', inset: 0, backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 256 256\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noise\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.9\' numOctaves=\'4\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noise)\' opacity=\'0.04\'/%3E%3C/svg%3E")', opacity: 0.4 }} />
+                <div className="hero-stats" style={{ position: 'absolute', inset: 0, backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 256 256\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noise\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.9\' numOctaves=\'4\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noise)\' opacity=\'0.04\'/%3E%3C/svg%3E")', opacity: 0.4 }} />
 
                 {/* Decorative gold lines */}
                 <div style={{ position: 'absolute', top: '20%', left: '8%', width: '1px', height: '120px', background: 'linear-gradient(to bottom, transparent, #D4AF6A44, transparent)' }} />
@@ -287,7 +295,7 @@ export default function LandingPage() {
                     <h2 style={{ fontFamily: 'Playfair Display, serif', fontSize: '36px', color: '#1C2B1A', fontWeight: 400, marginBottom: '60px' }}>
                         Three Steps to Live Signals
                     </h2>
-                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '40px' }}>
+                    <div className="grid-3-col" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '40px' }}>
                         {[
                             { step: '01', title: 'Register & Verify', desc: 'Create your account with Gmail. Verify via OTP. Takes under 2 minutes.' },
                             { step: '02', title: 'Choose a Plan', desc: 'Select the subscription that fits your volume. Submit your bank transfer reference.' },
@@ -317,7 +325,7 @@ export default function LandingPage() {
                         </p>
                     </div>
 
-                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '16px' }}>
+                    <div className="grid-4-col" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '16px' }}>
                         {plans.map(plan => (
                             <div key={plan.name} style={{
                                 background: plan.highlight ? '#D4AF6A' : '#2e4029',
@@ -422,7 +430,7 @@ export default function LandingPage() {
             </section>
 
             {/* ── Footer ── */}
-            <footer style={{ background: '#111d10', padding: '40px 48px', borderTop: '1px solid #D4AF6A15' }}>
+            <footer style={{ background: '#111d10', padding: '32px 24px', borderTop: '1px solid #D4AF6A15' }}>
                 <div style={{ maxWidth: '1100px', margin: '0 auto', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '16px' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                         <img src="/mts-logo.png" alt="mTradingSignal" style={{ width: '28px', height: '28px', objectFit: 'contain' }} />
