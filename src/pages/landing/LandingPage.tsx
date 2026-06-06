@@ -262,7 +262,7 @@ export default function LandingPage() {
                         position: 'absolute', bottom: 0, left: 0, right: 0,
                         background: '#D4AF6A0A', borderTop: '1px solid #D4AF6A22',
                         display: 'flex', justifyContent: 'center', gap: '64px',
-                        padding: '20px 48px',
+                        padding: '10px 36px',
                         opacity: heroVisible ? 1 : 0,
                         transition: 'opacity 0.9s ease 0.4s',
                     }}>
@@ -273,7 +273,7 @@ export default function LandingPage() {
                             { label: 'FLAT (No Trade)', value: stats.flatCount, suffix: '' },
                         ].map(({ label, value, suffix }) => (
                             <div key={label} style={{ textAlign: 'center' }}>
-                                <div style={{ fontFamily: 'Playfair Display, serif', fontSize: '28px', color: '#D4AF6A', lineHeight: 1 }}>
+                                <div style={{ fontFamily: 'Playfair Display, serif', fontSize: '24px', color: '#D4AF6A', lineHeight: 1 }}>
                                     <Counter to={value} suffix={suffix} />
                                 </div>
                                 <div style={{ color: '#5C7A58', fontSize: '11px', letterSpacing: '0.1em', marginTop: '4px' }}>{label}</div>
