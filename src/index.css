@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap');
+@import "tailwindcss";
+
+:root {
+  --green-deep: #1C2B1A;
+  --green-mid: #2e4029;
+  --green-light: #5C7A58;
+  --gold: #D4AF6A;
+  --gold-light: #F5EDD6;
+  --gold-dark: #8B6914;
+  --cream: #FAF7F2;
+  --cream-dark: #F5F0E8;
+  --border: #DDD6C4;
+  --border-light: #EDE8DE;
+  --text-primary: #1C2B1A;
+  --text-muted: #8a7e6a;
+  --text-sidebar: #8aaa84;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  font-family: 'EB Garamond', Georgia, serif;
+  background: #F5F0E8;
+  color: #1C2B1A;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Playfair Display', Georgia, serif;
+}

@@ -1,0 +1,10 @@
+User-agent: *
+Disallow: /admin/
+Disallow: /admin/login
+Disallow: /dashboard
+
+Allow: /
+Allow: /register
+Allow: /login
+
+Sitemap: https://mtradingsignal.com/sitemap.xml
