@@ -261,7 +261,7 @@ export default function LandingPage() {
                     <div style={{
                         position: 'absolute', bottom: 0, left: 0, right: 0,
                         background: '#D4AF6A0A', borderTop: '1px solid #D4AF6A22',
-                        display: 'flex', justifyContent: 'center', gap: '64px',
+                        display: 'flex', justifyContent: 'center', gap: '32px',
                         padding: '10px 36px',
                         opacity: heroVisible ? 1 : 0,
                         transition: 'opacity 0.9s ease 0.4s',
