@@ -96,7 +96,7 @@ export default function LandingPage() {
                 <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                     <img src="/mts-logo.png" alt="mTradingSignal" style={{ width: '32px', height: '32px', objectFit: 'contain' }} />
                     <span style={{ fontFamily: 'Playfair Display, Georgia, serif', color: '#D4AF6A', fontSize: '17px', letterSpacing: '0.04em' }}>
-                        mTradingSignal
+                        MTS
                     </span>
                 </div>
                 {/* Desktop links */}
@@ -262,7 +262,7 @@ export default function LandingPage() {
                         position: 'absolute', bottom: 0, left: 0, right: 0,
                         background: '#D4AF6A0A', borderTop: '1px solid #D4AF6A22',
                         display: 'flex', justifyContent: 'center', gap: '64px',
-                        padding: '20px 48px',
+                        padding: '40px 48px',
                         opacity: heroVisible ? 1 : 0,
                         transition: 'opacity 0.9s ease 0.4s',
                     }}>
