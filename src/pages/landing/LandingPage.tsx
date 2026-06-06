@@ -237,7 +237,7 @@ export default function LandingPage() {
                         trained on 20+ years of market data. Integrate in minutes.
                     </p>
 
-                    <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
+                    <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap', marginBottom: '40px' }}>
                         <Link to="/register" style={{
                             background: '#D4AF6A', color: '#1C2B1A', textDecoration: 'none',
                             padding: '14px 32px', borderRadius: '6px', fontSize: '15px',
@@ -262,7 +262,7 @@ export default function LandingPage() {
                         position: 'absolute', bottom: 0, left: 0, right: 0,
                         background: '#D4AF6A0A', borderTop: '1px solid #D4AF6A22',
                         display: 'flex', justifyContent: 'center', gap: '64px',
-                        padding: '40px 48px',
+                        padding: '20px 48px',
                         opacity: heroVisible ? 1 : 0,
                         transition: 'opacity 0.9s ease 0.4s',
                     }}>
