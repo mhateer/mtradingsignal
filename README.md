@@ -16,44 +16,46 @@ Gold XAU/USD trade signal intelligence platform. Provides hourly LONG/SHORT/FLAT
 - **Fonts**: Playfair Display + EB Garamond
 
 ---
-
 ## Project Structure
+
+```
 src/
-├── api/                  # API client functions
-│   ├── client.ts         # Axios instance (JWT interceptor)
-│   ├── auth.ts           # Admin auth
-│   ├── admin.ts          # Admin endpoints
-│   ├── userAuth.ts       # User auth + subscriptions
-│   └── public.ts         # Public chart data
+├── api/
+│   ├── client.ts
+│   ├── auth.ts
+│   ├── admin.ts
+│   ├── userAuth.ts
+│   └── public.ts
 ├── components/
-│   ├── admin/            # Admin layout + guards
+│   ├── admin/
 │   │   ├── AdminLayout.tsx
 │   │   └── ProtectedRoute.tsx
-│   ├── user/             # User guards
+│   ├── user/
 │   │   └── UserProtectedRoute.tsx
-│   └── landing/          # Landing page components
+│   └── landing/
 │       └── ChartsSection.tsx
 ├── pages/
-│   ├── admin/            # Admin dashboard pages
+│   ├── admin/
 │   │   ├── AdminLogin.tsx
 │   │   ├── AdminDashboard.tsx
 │   │   ├── AdminPayments.tsx
 │   │   ├── AdminSubscriptions.tsx
 │   │   ├── AdminUsers.tsx
 │   │   └── AdminCharts.tsx
-│   ├── user/             # User-facing pages
+├── user/
 │   │   ├── UserLogin.tsx
 │   │   ├── UserRegister.tsx
 │   │   └── UserDashboard.tsx
-│   └── landing/          # Public landing page
+│   └── landing/
 │       └── LandingPage.tsx
-├── store/                # Zustand stores
-│   ├── authStore.ts      # Admin auth state
-│   └── userAuthStore.ts  # User auth state
+├── store/
+│   ├── authStore.ts
+│   └── userAuthStore.ts
 └── types/
-└── types.ts          # Shared TypeScript interfaces
+    └── types.ts
+```
 
----
+-----
 
 ## Environment Variables
 
