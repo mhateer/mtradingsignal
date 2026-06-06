@@ -270,7 +270,7 @@ export default function LandingPage() {
                             { label: 'Signals Generated', value: stats.totalSignalsGenerated, suffix: '+' },
                             { label: 'LONG Signals', value: stats.longCount, suffix: '' },
                             { label: 'SHORT Signals', value: stats.shortCount, suffix: '' },
-                            { label: 'FLAT (No Trade)', value: stats.flatCount, suffix: '' },
+                            { label: 'FLAT', value: stats.flatCount, suffix: '' },
                         ].map(({ label, value, suffix }) => (
                             <div key={label} style={{ textAlign: 'center' }}>
                                 <div style={{ fontFamily: 'Playfair Display, serif', fontSize: '24px', color: '#D4AF6A', lineHeight: 1 }}>
