@@ -66,7 +66,7 @@ export default function UserRegister() {
       await resendOtp(pendingEmail);
       toast.success('New code sent to your Gmail');
     } catch (err: any) {
-      toast.error(err.response?.data?.message || 'Failed to resend code');
+      toast.error(err.response?.data?.message || 'Failed to resend code, try aiain');
     } finally {
       setResending(false);
     }
