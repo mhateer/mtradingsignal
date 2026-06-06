@@ -237,7 +237,7 @@ export default function LandingPage() {
                         trained on 20+ years of market data. Integrate in minutes.
                     </p>
 
-                    <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap', marginBottom: '40px' }}>
+                    <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap', marginBottom: '50px' }}>
                         <Link to="/register" style={{
                             background: '#D4AF6A', color: '#1C2B1A', textDecoration: 'none',
                             padding: '14px 32px', borderRadius: '6px', fontSize: '15px',
