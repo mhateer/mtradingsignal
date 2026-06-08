@@ -3,6 +3,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Toaster } from 'react-hot-toast';
 
 // Admin
+import AdminPinRoute from './components/admin/AdminPinRoute';
 import AdminLogin from './pages/admin/AdminLogin';
 import AdminCharts from './pages/admin/AdminCharts';
 import LandingPage from './pages/landing/LandingPage';
@@ -40,11 +41,20 @@ export default function App() {
           } />
 
           {/* Admin routes */}
-          <Route path="/admin/login" element={<AdminLogin />} />
+          <Route
+            path="/admin/login"
+            element={
+              <AdminPinRoute>
+                <AdminLogin />
+              </AdminPinRoute>
+            }
+          />
           <Route path="/admin" element={
-            <ProtectedRoute>
-              <AdminLayout />
-            </ProtectedRoute>
+            <AdminPinRoute>
+              <ProtectedRoute>
+                <AdminLayout />
+              </ProtectedRoute>
+            </AdminPinRoute>
           }>
             <Route index element={<Navigate to="/admin/dashboard" replace />} />
             <Route path="dashboard" element={<AdminDashboard />} />

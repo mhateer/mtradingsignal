@@ -4,6 +4,7 @@ interface AdminUser {
   id: string;
   email: string;
   fullName: string;
+  isAdmin: boolean;
 }
 
 interface AuthState {
