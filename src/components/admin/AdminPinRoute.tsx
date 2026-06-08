@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { Navigate } from 'react-router-dom';
 import AdminPinGate from '../../pages/admin/AdminPinGate';
 import { useAdminPinAuth } from '../../pages/admin/AdminPinGate';
 
