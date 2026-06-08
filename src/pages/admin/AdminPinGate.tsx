@@ -189,7 +189,7 @@ export default function AdminPinGate({ onVerified }: { onVerified: () => void })
           </div>
 
           <p style={{ color: '#2e4029', fontSize: '11px', marginTop: '24px', fontStyle: 'italic' }}>
-            Unauthorized access attempts are logged.
+            Unauthorized access attempts are logged !.
           </p>
         </div>
       </div>
