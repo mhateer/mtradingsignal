@@ -6,7 +6,6 @@ const api = axios.create({
 });
 
 api.interceptors.request.use((config) => {
-  // Use admin token for admin routes, user token for everything else
   const path = config.url || '';
   const isAdmin = path.startsWith('/admin');
   const token = isAdmin
