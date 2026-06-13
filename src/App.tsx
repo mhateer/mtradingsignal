@@ -19,6 +19,8 @@ import UserRegister from './pages/user/UserRegister';
 import UserLogin from './pages/user/UserLogin';
 import UserDashboard from './pages/user/UserDashboard';
 import UserProtectedRoute from './components/user/UserProtectedRoute';
+import InstallAgent from './pages/user/InstallAgent';
+
 
 const queryClient = new QueryClient({
   defaultOptions: { queries: { retry: 1, staleTime: 30000 } },
@@ -37,6 +39,11 @@ export default function App() {
           <Route path="/dashboard" element={
             <UserProtectedRoute>
               <UserDashboard />
+            </UserProtectedRoute>
+          } />
+          <Route path="/dashboard/install-agent" element={
+            <UserProtectedRoute>
+              <InstallAgent />
             </UserProtectedRoute>
           } />
 

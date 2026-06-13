@@ -1,7 +1,8 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
-import { getMySubscription, getMySubscriptions, getPlans, requestSubscription, regenerateApiKey } from '../../api/userAuth'; import { useUserAuthStore } from '../../store/userAuthStore';
+import { getMySubscription, getMySubscriptions, getPlans, requestSubscription, regenerateApiKey } from '../../api/userAuth';
+import { useUserAuthStore } from '../../store/userAuthStore';
 import type { Plan, Subscription } from '../../types/types';
 import { format } from 'date-fns';
 import toast from 'react-hot-toast';
@@ -34,6 +35,9 @@ export default function UserDashboard() {
 
   const hasActiveSub = activeSub?.plan && activeSub?.status === 'active';
   const hasPendingSub = history.some((s: Subscription) => s.status === 'pending');
+
+  // Agent access — Pro & Enterprise only, and subscription must be active
+  const hasAgentAccess = hasActiveSub && (activeSub?.plan === 'pro' || activeSub?.plan === 'enterprise');
 
   const regenMutation = useMutation({
     mutationFn: regenerateApiKey,
@@ -69,9 +73,31 @@ export default function UserDashboard() {
     <div style={{ minHeight: '100vh', background: '#F5F0E8' }}>
 
       {/* Nav */}
-      <nav style={{ background: '#1C2B1A', padding: '0 20px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', height: '56px' }}>
-        <a href="/"><div style={{ fontFamily: 'Playfair Display, serif', fontSize: '16px', color: '#D4AF6A', letterSpacing: '0.04em' }}>mTradingSignal</div></a>
+      <nav style={{ background: '#1C2B1A', padding: '0 20px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', height: '56px', flexWrap: 'wrap' as const, gap: '8px' }}>
+        <a href="/" style={{ textDecoration: 'none' }}><div style={{ fontFamily: 'Playfair Display, serif', fontSize: '16px', color: '#D4AF6A', letterSpacing: '0.04em' }}>mTradingSignal</div></a>
         <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
+
+          {/* Install Agent link — Pro/Enterprise only */}
+          {hasAgentAccess && (
+            <Link to="/dashboard/install-agent" style={{
+              display: 'flex', alignItems: 'center', gap: '7px',
+              fontSize: '13px', color: '#D4AF6A', textDecoration: 'none',
+              fontFamily: 'EB Garamond, serif',
+              border: '1px solid #D4AF6A44', borderRadius: '20px',
+              padding: '5px 14px', transition: 'background 0.2s',
+            }}
+              onMouseEnter={e => (e.currentTarget.style.background = '#D4AF6A15')}
+              onMouseLeave={e => (e.currentTarget.style.background = 'transparent')}
+            >
+              <span style={{
+                width: '7px', height: '7px', borderRadius: '50%',
+                background: '#7ec87e', boxShadow: '0 0 6px #7ec87e',
+                display: 'inline-block', flexShrink: 0,
+              }} />
+              Install Agent
+            </Link>
+          )}
+
           <span style={{ fontSize: '13px', color: '#8aaa84', fontFamily: 'EB Garamond, serif' }}>{user?.email}</span>
           <button onClick={handleLogout} style={{ fontSize: '12px', color: '#5C7A58', background: 'none', border: 'none', cursor: 'pointer', fontFamily: 'EB Garamond, serif' }}>Sign Out →</button>
         </div>
@@ -86,6 +112,40 @@ export default function UserDashboard() {
           </h1>
           <p style={{ fontSize: '14px', color: '#8a7e6a', fontStyle: 'italic', marginTop: '4px' }}>Your trade signal intelligence dashboard.</p>
         </div>
+
+        {/* Agent access banner — Pro/Enterprise only */}
+        {hasAgentAccess && (
+          <div style={{
+            background: '#1C2B1A', borderRadius: '8px', padding: '18px 24px',
+            marginBottom: '24px', display: 'flex', alignItems: 'center',
+            justifyContent: 'space-between', flexWrap: 'wrap' as const, gap: '12px',
+            border: '1px solid #D4AF6A22',
+          }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+              <span style={{
+                width: '9px', height: '9px', borderRadius: '50%',
+                background: '#7ec87e', boxShadow: '0 0 10px #7ec87e',
+                display: 'inline-block', flexShrink: 0,
+              }} />
+              <div>
+                <div style={{ fontFamily: 'Playfair Display, serif', fontSize: '15px', color: '#FAF7F2' }}>
+                  Trading Agent Access Unlocked
+                </div>
+                <div style={{ fontSize: '12px', color: '#8aaa84', fontStyle: 'italic', marginTop: '2px' }}>
+                  Your {activeSub?.plan} plan includes the mTradingSignal Agent desktop app.
+                </div>
+              </div>
+            </div>
+            <Link to="/dashboard/install-agent" style={{
+              background: '#D4AF6A', color: '#1C2B1A', textDecoration: 'none',
+              borderRadius: '6px', padding: '9px 20px', fontSize: '13px',
+              fontFamily: 'Playfair Display, serif', letterSpacing: '0.04em',
+              whiteSpace: 'nowrap' as const,
+            }}>
+              Download Agent →
+            </Link>
+          </div>
+        )}
 
         {/* LOCKED STATE — no active subscription */}
         {!subLoading && !hasActiveSub && (
@@ -260,6 +320,11 @@ export default function UserDashboard() {
                     <div>
                       <span style={{ fontFamily: 'Playfair Display, serif', fontSize: '15px', color: '#1C2B1A', textTransform: 'capitalize' }}>{plan.plan}</span>
                       <span style={{ fontSize: '12px', color: '#8a7e6a', fontStyle: 'italic', marginLeft: '8px' }}>{plan.note}</span>
+                      {(plan.plan === 'pro' || plan.plan === 'enterprise') && (
+                        <span style={{ fontSize: '10px', color: '#3B6D11', background: '#EAF3DE', padding: '1px 7px', borderRadius: '10px', marginLeft: '8px', letterSpacing: '0.06em' }}>
+                          + AGENT
+                        </span>
+                      )}
                     </div>
                     <div style={{ fontFamily: 'Playfair Display, serif', fontSize: '18px', color: '#D4AF6A' }}>${plan.price}</div>
                   </div>
@@ -336,7 +401,7 @@ export default function UserDashboard() {
                     display: 'flex',
                     justifyContent: 'space-between',
                     alignItems: 'center',
-                    backgroundColor: '#F3F4F1', /* Slight green tint for emphasis */
+                    backgroundColor: '#F3F4F1',
                     border: '1px solid #D6DCD4',
                     borderRadius: '8px',
                     padding: '12px 16px'
@@ -352,12 +417,12 @@ export default function UserDashboard() {
                       1749246676715
                     </span>
                   </div>
-                  {/* Account Number Box */}
+                  {/* IBAN Box */}
                   <div style={{
                     display: 'flex',
                     justifyContent: 'space-between',
                     alignItems: 'center',
-                    backgroundColor: '#F3F4F1', /* Slight green tint for emphasis */
+                    backgroundColor: '#F3F4F1',
                     border: '1px solid #D6DCD4',
                     borderRadius: '8px',
                     padding: '12px 16px'

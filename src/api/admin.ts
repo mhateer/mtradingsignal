@@ -55,6 +55,11 @@ export const addCalls = async (id: string, calls: number) => {
   return res.data;
 };
 
+export async function getAllDownloads() {
+  const res = await api.get('/admin/downloads');
+  return res.data;
+}
+
 export const extendExpiry = async (id: string, days: number) => {
   const res = await api.post(`/admin/subscriptions/${id}/extend-expiry`, { days });
   return res.data;

@@ -54,10 +54,26 @@ function Counter({ to, suffix = '', duration = 1800 }: { to: number; suffix?: st
 
 // ── Plan Card ─────────────────────────────────────────────────────────────────
 const plans = [
-    { name: 'Trial', price: 7, duration: '7 days', calls: 50, rows: 1, note: 'One-time', highlight: false },
-    { name: 'Basic', price: 19, duration: '30 days', calls: '1,000', rows: 24, note: '~24 hrs data', highlight: false },
-    { name: 'Pro', price: 49, duration: '30 days', calls: '5,000', rows: 48, note: '~48 hrs data', highlight: true },
-    { name: 'Enterprise', price: 99, duration: '30 days', calls: 'Unlimited', rows: 72, note: '7 days data', highlight: false },
+    {
+        name: 'Trial', price: 7, duration: '7 days', calls: 50, rows: 1,
+        note: 'One-time only', highlight: false, badge: null as string | null,
+        extras: [] as string[],
+    },
+    {
+        name: 'Basic', price: 19, duration: '30 days', calls: '1,000', rows: 24,
+        note: '~24 hrs data', highlight: false, badge: null as string | null,
+        extras: [] as string[],
+    },
+    {
+        name: 'Pro', price: 49, duration: '30 days', calls: '5,000', rows: 48,
+        note: '~48 hrs data', highlight: true, badge: 'Most Popular' as string | null,
+        extras: ['MTS Agent — auto-trade on MT5'] as string[],
+    },
+    {
+        name: 'Enterprise', price: 99, duration: '30 days', calls: 'Unlimited', rows: 72,
+        note: '7 days data', highlight: false, badge: 'Full Access' as string | null,
+        extras: ['MTS Agent — auto-trade on MT5', 'Telegram trade notifications'] as string[],
+    },
 ];
 
 const faqs = [
@@ -335,9 +351,9 @@ export default function LandingPage() {
                             }}
                                 onMouseEnter={e => (e.currentTarget.style.transform = 'translateY(-4px)')}
                                 onMouseLeave={e => (e.currentTarget.style.transform = 'translateY(0)')}>
-                                {plan.highlight && (
-                                    <div style={{ position: 'absolute', top: '-10px', left: '50%', transform: 'translateX(-50%)', background: '#1C2B1A', color: '#D4AF6A', fontSize: '10px', letterSpacing: '0.12em', padding: '3px 12px', borderRadius: '20px', whiteSpace: 'nowrap' }}>
-                                        MOST POPULAR
+                                {plan.badge && (
+                                    <div style={{ position: 'absolute', top: '-10px', left: '50%', transform: 'translateX(-50%)', background: plan.highlight ? '#1C2B1A' : '#D4AF6A', color: plan.highlight ? '#D4AF6A' : '#1C2B1A', fontSize: '10px', letterSpacing: '0.12em', padding: '3px 12px', borderRadius: '20px', whiteSpace: 'nowrap' as const }}>
+                                        {plan.badge.toUpperCase()}
                                     </div>
                                 )}
                                 <div style={{ fontFamily: 'Playfair Display, serif', fontSize: '20px', color: plan.highlight ? '#1C2B1A' : '#FAF7F2', marginBottom: '4px' }}>{plan.name}</div>
@@ -348,6 +364,7 @@ export default function LandingPage() {
                                     {[
                                         `${typeof plan.calls === 'number' ? plan.calls.toLocaleString() : plan.calls} API calls`,
                                         `${plan.rows} rows per call`,
+                                        ...(plan.extras || []),
                                         'LONG · SHORT · FLAT',
                                         'NY market hours',
                                     ].map(feat => (
