@@ -1,4 +1,4 @@
-import { api } from './client';
+import api from './client';
 
 /**
  * Downloads the agent installer as an authenticated blob and triggers
