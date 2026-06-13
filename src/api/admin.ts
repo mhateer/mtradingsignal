@@ -4,7 +4,7 @@ export const getPendingSubscriptions = async () => {
   const res = await api.get('/admin/subscriptions/pending');
   return res.data;
 };
-
+//good
 export const confirmPayment = async (subscriptionId: string) => {
   const res = await api.post(`/admin/subscriptions/${subscriptionId}/confirm`);
   return res.data;
